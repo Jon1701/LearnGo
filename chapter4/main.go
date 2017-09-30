@@ -2,19 +2,16 @@ package main
 
 import "fmt"
 
-/*
- Variable `x` is outside of `main`.
- Other functions are able to access this variable.
-*/
-var x string = "Hello World"
-
 func main() {
+  // Declare and assign a constant.
+  const x string = "Hello World"
   fmt.Println(x)
 
-  f()
-}
+  // Attempt to re-assign x.
+  x = "Some other string"
 
-// This function has access to `x`
-func f() {
-  fmt.Println(x)
+  /*
+    Should display the following error:
+    ./main.go:11:5: cannot assign to x
+  */
 }
