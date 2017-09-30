@@ -3,30 +3,21 @@ package main
 import "fmt"
 
 func main() {
-  /*
-  Create a slice which is associated with an underlying
-  float64 array of length 5.
-  */
-  x := make([]float64, 5, 10)
-  fmt.Println(x)
+  slice1 := []int{1,2,3}
 
   /*
-  Another way to create slices is to use the [low:high]
-  expression.
+  `append` creates a new slice by taking the existing slice `slice1`
+   and appending all the following arguments to it.
   */
-  arr := []float64{1,2,3,4,5}
+  slice2 := append(slice1, 4, 5)
+  fmt.Println(slice1, slice2)
 
-  /*
-  Create a slice using [low:high expressions].
-  Can omit endpoints.
-  */
-  y := arr[0:5]
-  z := arr[0:]
-  u := arr[:5]
-  v := arr[:]
+  // Create a slice of size 2.
+  slice3 := make([]int, 2)
 
-  fmt.Println(y)
-  fmt.Println(z)
-  fmt.Println(u)
-  fmt.Println(v)
+  // Copy elements from `slice1` into `slice3`
+  copy(slice3, slice1)
+
+  // Only the first 2 elements are copied, since `slice3` has a size of 2.
+  fmt.Println(slice3);
 }
