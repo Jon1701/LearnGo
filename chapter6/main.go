@@ -3,36 +3,30 @@ package main
 import "fmt"
 
 func main() {
-  // Declare array of 5 ints (default to 0 each)
-  var x [5]int
-
-  // Set 5th element to 100.
-  x[4] = 100
-
+  /*
+  Create a slice which is associated with an underlying
+  float64 array of length 5.
+  */
+  x := make([]float64, 5, 10)
   fmt.Println(x)
 
-  // Declare array of 5 float64.
-  var y [5]float64
+  /*
+  Another way to create slices is to use the [low:high]
+  expression.
+  */
+  arr := []float64{1,2,3,4,5}
 
-  // Set elements.
-  y[0] = 98
-  y[1] = 93
-  y[2] = 77
-  y[3] = 82
-  y[4] = 83
+  /*
+  Create a slice using [low:high expressions].
+  Can omit endpoints.
+  */
+  y := arr[0:5]
+  z := arr[0:]
+  u := arr[:5]
+  v := arr[:]
 
-  // Create a variable of type float64.
-  var total float64 = 0
-
-  // Calculate total.
-  for _, value := range y {
-    total += value
-  }
-
-  // Print average.
-  fmt.Println(total / float64(len(y)))
-
-  // Shorter syntax for creating arrays:
-  z := [5]float64{ 98, 93, 77, 82, 83 }
+  fmt.Println(y)
   fmt.Println(z)
+  fmt.Println(u)
+  fmt.Println(v)
 }
