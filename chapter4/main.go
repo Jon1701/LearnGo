@@ -2,16 +2,19 @@ package main
 
 import "fmt"
 
+/*
+ Variable `x` is outside of `main`.
+ Other functions are able to access this variable.
+*/
+var x string = "Hello World"
+
 func main() {
-  // Bad name for a variable.
-  x := "Max"
-  fmt.Println("My dog's name is", x)
+  fmt.Println(x)
 
-  // Better name for a variable.
-  name := "Max"
-  fmt.Println("My dog's name is", name)
+  f()
+}
 
-  // Better name for a variable.
-  dogsName := "Max"
-  fmt.Println("My dog's name is", dogsName)
+// This function has access to `x`
+func f() {
+  fmt.Println(x)
 }
