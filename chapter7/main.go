@@ -3,13 +3,21 @@ package main
 import "fmt"
 
 func main() {
-  fmt.Println(factorial(6))
+  defer second()
+  first()
+
+  defer func() {
+    str := recover()
+    fmt.Println(str)
+  }()
+
+  panic("PANIC")
 }
 
-func factorial(x uint) uint {
-  if x == 0 {
-    return 1
-  }
+func first() {
+  fmt.Println("1st")
+}
 
-  return x * factorial(x - 1)
+func second() {
+  fmt.Println("2nd")
 }
